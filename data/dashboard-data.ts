@@ -1,3 +1,4 @@
+
 export type KPI = {
   label: string;
   value: string;
@@ -30,13 +31,6 @@ export type Driver = {
   insight: string;
 };
 
-export type AlertItem = {
-  title: string;
-  level: 'High' | 'Medium' | 'Low';
-  detail: string;
-  action: string;
-};
-
 export type Scenario = {
   name: string;
   revenueLift: string;
@@ -45,74 +39,200 @@ export type Scenario = {
   projectedProfitGrowth: string;
 };
 
+export type PrimaryKPI = {
+  id: 'profit' | 'digital' | 'category';
+  value: string;
+  target: string;
+  status: 'On Track' | 'Watchlist' | 'Critical';
+  change: string;
+};
+
+export type SupportingKPI = {
+  id: 'revenue' | 'margin' | 'cashflow';
+  value: string;
+  target: string;
+  status: 'On Track' | 'Watchlist' | 'Critical';
+  change: string;
+};
+
+export type FinancialPoint = {
+  month: string;
+  revenue: number;
+  profit: number;
+};
+
+export type DigitalPoint = {
+  channel: string;
+  share: string;
+};
+
+export type CategoryPoint = {
+  segment: string;
+  contribution: string;
+};
+
+export type AlertItem = {
+  id: 'promo' | 'surabaya' | 'digital';
+  level: 'High' | 'Medium' | 'Low';
+  title?: string;
+  detail?: string;
+  action?: string;
+};
+
+export const primaryKpis: PrimaryKPI[] = [
+  {
+    id: 'profit',
+    value: '52.4% YoY',
+    target: '> 50% YoY',
+    status: 'On Track',
+    change: '+4.8 pts vs Q4',
+  },
+  {
+    id: 'digital',
+    value: '61.7%',
+    target: '> 60% transactions',
+    status: 'On Track',
+    change: '+5.2 pts vs FY25',
+  },
+  {
+    id: 'category',
+    value: '22.3%',
+    target: '> 20% total revenue',
+    status: 'On Track',
+    change: '+3.1 pts vs plan',
+  },
+];
+
+export const supportingKpis: SupportingKPI[] = [
+  {
+    id: 'revenue',
+    value: '48.9% YoY',
+    target: '45%–55% YoY',
+    status: 'On Track',
+    change: '+6.1 pts vs LY',
+  },
+  {
+    id: 'margin',
+    value: '2.2% / 61.8%',
+    target: 'NPM 2.0%–2.5%, GM >60%',
+    status: 'Watchlist',
+    change: '-0.2 pts vs peak',
+  },
+  {
+    id: 'cashflow',
+    value: 'Rp46.5B',
+    target: '> Rp40B / quarter',
+    status: 'On Track',
+    change: '+Rp5.7B vs plan',
+  },
+];
+
+export const financialTrend: FinancialPoint[] = [
+  { month: 'Jan', revenue: 72, profit: 11 },
+  { month: 'Feb', revenue: 75, profit: 12 },
+  { month: 'Mar', revenue: 79, profit: 13 },
+  { month: 'Apr', revenue: 84, profit: 14 },
+  { month: 'May', revenue: 88, profit: 15 },
+  { month: 'Jun', revenue: 93, profit: 17 },
+];
+
+export const digitalMix: DigitalPoint[] = [
+  { channel: 'Fore App', share: '38%' },
+  { channel: 'Marketplace', share: '24%' },
+  { channel: 'Offline POS', share: '38%' },
+];
+
+export const categoryMix: CategoryPoint[] = [
+  { segment: 'Coffee', contribution: '77.7%' },
+  { segment: 'Food & Donut', contribution: '17.1%' },
+  { segment: 'Other Non-Coffee', contribution: '5.2%' },
+];
+
+export const alerts: AlertItem[] = [
+  {
+    id: 'promo',
+    level: 'High',
+    title: 'Protect margin during promo cycles',
+    detail: 'Promotional pressure needs tighter control in selected clusters.',
+    action: 'Reduce discount depth and push bundles with stronger margin.',
+  },
+  {
+    id: 'surabaya',
+    level: 'Medium',
+    title: 'Surabaya productivity needs attention',
+    detail: 'Productivity is still below expectation ahead of the next rollout phase.',
+    action: 'Review local campaign design and improve menu mix execution.',
+  },
+  {
+    id: 'digital',
+    level: 'Low',
+    title: 'Digital adoption must stay above target',
+    detail: 'Digital mix is on track but must stay resilient as outlet count expands.',
+    action: 'Maintain app-led incentives and channel conversion programs.',
+  },
+];
+
+
 export const kpis: KPI[] = [
   {
     label: 'Net Profit Growth',
     value: '52.4% YoY',
-    target: 'Target > 50%',
+    target: '> 50% YoY',
     status: 'On Track',
     change: '+4.8 pts vs Q4',
-    note: 'Outlet maturity and cost discipline remain the main growth levers.',
+    note: 'Primary profit growth KPI.',
   },
   {
-    label: 'Revenue Growth',
-    value: '48.9% YoY',
-    target: 'Range 45%–55%',
+    label: 'Digital Sales Penetration Rate',
+    value: '61.7%',
+    target: '> 60% transactions',
     status: 'On Track',
-    change: '+6.1 pts vs LY',
-    note: 'Food bundles continue to lift basket size and repeat transactions.',
+    change: '+5.2 pts vs FY25',
+    note: 'Primary digital KPI.',
   },
   {
-    label: 'Net Profit Margin',
-    value: '2.2%',
-    target: 'Range 2.0%–2.5%',
-    status: 'Watchlist',
-    change: '-0.2 pts vs peak',
-    note: 'Promotional pressure is manageable but still needs tighter control.',
+    label: 'New Category Revenue Contribution',
+    value: '22.3%',
+    target: '> 20% total revenue',
+    status: 'On Track',
+    change: '+3.1 pts vs plan',
+    note: 'Primary diversification KPI.',
   },
   {
-    label: 'Operating Cash Flow',
+    label: 'Cash Flow Health',
     value: 'Rp46.5B',
-    target: 'Target > Rp40B/qtr',
+    target: '> Rp40B / quarter',
     status: 'On Track',
     change: '+Rp5.7B vs plan',
-    note: 'Cash generation remains strong enough to support the next rollout wave.',
+    note: 'Supporting liquidity KPI.',
   },
 ];
 
-export const trends: TrendPoint[] = [
-  { month: 'Jan', revenue: 72, netProfit: 11, margin: 58 },
-  { month: 'Feb', revenue: 75, netProfit: 12, margin: 59 },
-  { month: 'Mar', revenue: 79, netProfit: 13, margin: 60 },
-  { month: 'Apr', revenue: 84, netProfit: 14, margin: 61 },
-  { month: 'May', revenue: 88, netProfit: 15, margin: 61 },
-  { month: 'Jun', revenue: 93, netProfit: 17, margin: 62 },
-];
+export const trends: TrendPoint[] = financialTrend.map((point) => ({
+  month: point.month,
+  revenue: point.revenue,
+  netProfit: point.profit,
+  margin: 60,
+}));
 
 export const drivers: Driver[] = [
   {
-    title: 'Food Attachment Rate',
-    impact: 'Revenue Growth',
-    value: '+18%',
-    insight: 'Bundles lift average ticket and improve mix quality.',
+    title: 'App-led Transactions',
+    impact: 'Digital Sales Penetration Rate',
+    value: '61.7%',
+    insight: 'Digital transaction share remains above target.',
   },
   {
-    title: 'Gross Margin Discipline',
-    impact: 'Profitability Margin',
-    value: '61.8%',
-    insight: 'Premium mix and tighter COGS control keep margins resilient.',
+    title: 'Food and Donut Mix',
+    impact: 'New Category Revenue Contribution',
+    value: '22.3%',
+    insight: 'Non-coffee contribution now exceeds the strategic threshold.',
   },
   {
-    title: 'Store Operating Efficiency',
+    title: 'Margin Discipline',
     impact: 'Net Profit Growth',
-    value: '-6.4% OpEx/store',
-    insight: 'Mature stores are scaling with lower operating cost per outlet.',
-  },
-  {
-    title: 'Cash Conversion',
-    impact: 'Cash Flow Health',
-    value: '27 days',
-    insight: 'Faster cash cycles preserve funding capacity for expansion.',
+    value: '61.8%',
+    insight: 'Healthy gross margin supports profit expansion.',
   },
 ];
 
@@ -140,43 +260,6 @@ export const outletPerformance: OutletPerformance[] = [
     netProfitContribution: '9%',
     margin: '1.9%',
     status: 'Monitor',
-  },
-  {
-    city: 'Medan',
-    outletCount: 12,
-    revenueGrowth: '39%',
-    netProfitContribution: '6%',
-    margin: '1.7%',
-    status: 'Improve',
-  },
-  {
-    city: 'Makassar',
-    outletCount: 9,
-    revenueGrowth: '41%',
-    netProfitContribution: '5%',
-    margin: '1.8%',
-    status: 'Monitor',
-  },
-];
-
-export const alerts: AlertItem[] = [
-  {
-    title: 'Promo margin is slightly compressed',
-    level: 'High',
-    detail: 'New-store discounting is dragging margin 0.3 points below mature clusters.',
-    action: 'Reduce promo depth and push higher-margin bundles.',
-  },
-  {
-    title: 'Surabaya is below target productivity',
-    level: 'Medium',
-    detail: 'Revenue growth is still below the CPM corridor for tier-1 expansion cities.',
-    action: 'Review daypart mix, menu fit, and local campaign design.',
-  },
-  {
-    title: 'Cash position remains expansion-ready',
-    level: 'Low',
-    detail: 'Operating cash flow still sits above the minimum quarterly threshold.',
-    action: 'Keep capex prioritization disciplined for the next opening wave.',
   },
 ];
 
