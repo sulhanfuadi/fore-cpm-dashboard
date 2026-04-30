@@ -21,6 +21,10 @@ type Copy = {
   trendEyebrow: string;
   trendTitle: string;
   trendNote: string;
+  trendSummaryTitle: string;
+  trendSummaryItems: Array<{ value: string; label: string }>;
+  trendInsightTitle: string;
+  trendInsightBody: string;
   driverEyebrow: string;
   driverTitle: string;
   driverNote: string;
@@ -75,6 +79,14 @@ const copy: Record<Locale, Copy> = {
     trendEyebrow: 'Trend Analysis',
     trendTitle: 'Revenue vs Profit Momentum',
     trendNote: 'Semester 1 trend',
+    trendSummaryTitle: 'Trend Summary',
+    trendSummaryItems: [
+      { value: '+21 pts', label: 'Revenue index growth' },
+      { value: '+6 pts', label: 'Gross margin uplift' },
+      { value: '+54%', label: 'Profit index expansion' },
+    ],
+    trendInsightTitle: 'Momentum insight',
+    trendInsightBody: 'Revenue and net profit continue to rise together, indicating the current expansion phase is still accretive and operational leverage is improving.',
     driverEyebrow: 'Profit Bridge',
     driverTitle: 'Top Value Drivers',
     driverNote: 'Core CPM levers',
@@ -143,6 +155,14 @@ const copy: Record<Locale, Copy> = {
     trendEyebrow: 'Analisis Tren',
     trendTitle: 'Momentum Revenue vs Profit',
     trendNote: 'Tren semester 1',
+    trendSummaryTitle: 'Ringkasan Tren',
+    trendSummaryItems: [
+      { value: '+21 poin', label: 'Pertumbuhan indeks revenue' },
+      { value: '+6 poin', label: 'Peningkatan gross margin' },
+      { value: '+54%', label: 'Ekspansi indeks profit' },
+    ],
+    trendInsightTitle: 'Insight momentum',
+    trendInsightBody: 'Revenue dan net profit terus naik bersama, menunjukkan fase ekspansi saat ini masih accretive dan operational leverage terus membaik.',
     driverEyebrow: 'Profit Bridge',
     driverTitle: 'Driver Nilai Utama',
     driverNote: 'Levers CPM inti',
@@ -295,6 +315,23 @@ export default function Home() {
           <div className="mini-legend">
             <span><i className="legend revenue" /> {t.revenueLegend}</span>
             <span><i className="legend profit" /> {t.profitLegend}</span>
+          </div>
+          <div className="trend-bottom-grid">
+            <section className="trend-summary-card">
+              <span className="eyebrow">{t.trendSummaryTitle}</span>
+              <div className="trend-summary-stats">
+                {t.trendSummaryItems.map((item) => (
+                  <div key={item.label} className="trend-summary-item">
+                    <strong>{item.value}</strong>
+                    <span>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="trend-insight-card">
+              <span className="eyebrow">{t.trendInsightTitle}</span>
+              <p>{t.trendInsightBody}</p>
+            </section>
           </div>
         </section>
 
