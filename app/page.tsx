@@ -9,41 +9,43 @@ import { alerts, drivers, kpis, outletPerformance, scenarios, trends } from '@/d
 export default function Home() {
   return (
     <main className="page-shell">
-      <section className="hero">
-        <div>
-          <span className="badge">Fore Coffee • Corporate Performance Management</span>
-          <h1>Executive Dashboard for Net Profit Growth</h1>
+      <section className="topbar">
+        <div className="topbar-copy">
+          <span className="eyebrow">Fore Coffee · CPM Executive Dashboard</span>
+          <h1>Single-screen performance view for profit-led growth</h1>
           <p>
-            Prototype dashboard untuk memonitor target utama <strong>Net Profit Growth &gt; 50% YoY</strong>
-            {' '}beserta driver revenue, margin, cash flow, dan performa ekspansi outlet.
+            Monitor <strong>Net Profit Growth &gt; 50% YoY</strong> with compact visibility into revenue,
+            margin, cash flow, outlet performance, and scenario readiness.
           </p>
         </div>
-        <div className="hero-side card">
-          <p className="eyebrow">2026 Strategic Goal</p>
-          <h2>Grow profit faster, not just bigger.</h2>
+        <div className="strategy-strip card compact-card">
+          <span className="eyebrow">2026 Focus</span>
           <ul>
-            <li>Target outlet growth terkontrol</li>
-            <li>Margin tetap sehat saat ekspansi</li>
-            <li>Cash flow aman untuk scale-up</li>
+            <li>Scale profitable outlets</li>
+            <li>Protect margin quality</li>
+            <li>Keep expansion cash-positive</li>
           </ul>
         </div>
       </section>
 
-      <section className="kpi-grid">
+      <section className="kpi-grid dense-kpi-grid">
         {kpis.map((item) => (
           <KpiCard key={item.label} item={item} />
         ))}
       </section>
 
-      <section className="content-grid">
-        <TrendChart data={trends} />
-        <DriversPanel data={drivers} />
-      </section>
-
-      <section className="content-grid bottom-grid">
-        <OutletTable rows={outletPerformance} />
-        <div className="stack">
+      <section className="dashboard-grid">
+        <div className="primary-panel">
+          <TrendChart data={trends} />
+        </div>
+        <div className="secondary-stack">
+          <DriversPanel data={drivers} />
           <AlertsPanel items={alerts} />
+        </div>
+        <div className="compact-panel">
+          <OutletTable rows={outletPerformance.slice(0, 4)} />
+        </div>
+        <div className="compact-panel">
           <ScenarioPanel items={scenarios} />
         </div>
       </section>
