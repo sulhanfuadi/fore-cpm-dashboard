@@ -33,6 +33,8 @@ type Copy = {
   trendSummaryItems: Array<{ value: string; label: string }>;
   trendInsightTitle: string;
   trendInsightBody: string;
+  trendExtraTitle: string;
+  trendExtraItems: Array<{ label: string; value: string }>;
   driverEyebrow: string;
   driverTitle: string;
   driverNote: string;
@@ -45,6 +47,8 @@ type Copy = {
   scenarioTitle: string;
   scenarioNote: string;
   scenarioItems: Array<{ name: string; result: string; note: string }>;
+  scenarioExtraTitle: string;
+  scenarioExtraBody: string;
   alertEyebrow: string;
   alertTitle: string;
   alertNote: string;
@@ -89,6 +93,12 @@ const copy: Record<Locale, Copy> = {
     ],
     trendInsightTitle: 'Financial takeaway',
     trendInsightBody: 'The growth profile remains healthy because revenue is rising while margin discipline and operating cash flow are still above the strategic floor.',
+    trendExtraTitle: 'Short read',
+    trendExtraItems: [
+      { label: 'Best support KPI', value: 'Gross Margin' },
+      { label: 'Most stable signal', value: 'Cash Flow' },
+      { label: 'Main growth base', value: 'Revenue' },
+    ],
     driverEyebrow: 'Digital Performance',
     driverTitle: 'Channel Penetration Mix',
     driverNote: 'Main KPI: digital sales penetration',
@@ -105,6 +115,8 @@ const copy: Record<Locale, Copy> = {
       { name: 'Digital Push', result: '64%', note: 'Digital penetration' },
       { name: 'Category Push', result: '24%', note: 'New category share' },
     ],
+    scenarioExtraTitle: 'Scenario note',
+    scenarioExtraBody: 'These scenarios are directional views to help management compare which lever should be prioritized first.',
     alertEyebrow: 'Action Center',
     alertTitle: 'Key Alerts',
     alertNote: 'Immediate attention',
@@ -180,6 +192,12 @@ const copy: Record<Locale, Copy> = {
     ],
     trendInsightTitle: 'Financial takeaway',
     trendInsightBody: 'Profil pertumbuhan masih sehat karena revenue naik, sementara disiplin margin dan arus kas operasi tetap berada di atas batas strategis.',
+    trendExtraTitle: 'Catatan singkat',
+    trendExtraItems: [
+      { label: 'KPI pendukung terbaik', value: 'Gross Margin' },
+      { label: 'Sinyal paling stabil', value: 'Cash Flow' },
+      { label: 'Basis pertumbuhan utama', value: 'Revenue' },
+    ],
     driverEyebrow: 'Digital Performance',
     driverTitle: 'Komposisi Penetrasi Kanal',
     driverNote: 'KPI utama: penetrasi penjualan digital',
@@ -196,6 +214,8 @@ const copy: Record<Locale, Copy> = {
       { name: 'Dorong Digital', result: '64%', note: 'Penetrasi digital' },
       { name: 'Dorong Kategori', result: '24%', note: 'Porsi kategori baru' },
     ],
+    scenarioExtraTitle: 'Catatan skenario',
+    scenarioExtraBody: 'Skenario ini bersifat directional untuk membantu manajemen membandingkan leverage mana yang perlu diprioritaskan lebih dulu.',
     alertEyebrow: 'Action Center',
     alertTitle: 'Key Alerts',
     alertNote: 'Perlu perhatian segera',
@@ -357,6 +377,17 @@ export default function Home() {
               <p>{t.trendInsightBody}</p>
             </section>
           </div>
+          <section className="trend-extra-strip">
+            <span className="eyebrow">{t.trendExtraTitle}</span>
+            <div className="trend-extra-grid">
+              {t.trendExtraItems.map((item) => (
+                <div key={item.label} className="trend-extra-item">
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </section>
         </section>
 
         <section className="card panel drivers-panel">
@@ -449,6 +480,10 @@ export default function Home() {
                 <small>{item.note}</small>
               </article>
             ))}
+          </div>
+          <div className="scenario-note-card">
+            <span className="eyebrow">{t.scenarioExtraTitle}</span>
+            <p>{t.scenarioExtraBody}</p>
           </div>
         </section>
       </section>
