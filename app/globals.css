@@ -496,3 +496,51 @@ small { font: inherit; }
   font-size: 0.72rem;
   line-height: 1.32;
 }
+
+
+.outlet-head {
+  align-items: center;
+}
+
+.panel-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.5);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.outlet-panel .compact-head p {
+  display: none;
+}
+
+.outlet-panel .mini-item-top {
+  align-items: center;
+}
+
+.outlet-panel .mini-item strong {
+  font-size: 0.8rem;
+}
+
+.outlet-panel .mini-item-top span {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.outlet-panel .footer-copy-card.single-copy {
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .panel-tag {
+    white-space: normal;
+  }
+}

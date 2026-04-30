@@ -421,12 +421,12 @@ export default function Home() {
         </section>
 
         <section className="card panel outlet-panel">
-          <div className="section-head compact-head">
+          <div className="section-head compact-head outlet-head">
             <div>
               <span className="eyebrow">{t.outletEyebrow}</span>
               <h2>{t.outletTitle}</h2>
             </div>
-            <p>{t.outletNote}</p>
+            <span className="panel-tag">{t.outletNote}</span>
           </div>
           <div className="mini-list compact-list">
             {categoryMix.map((item) => (
