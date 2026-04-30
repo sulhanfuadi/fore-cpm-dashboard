@@ -49,34 +49,34 @@ export const kpis: KPI[] = [
   {
     label: 'Net Profit Growth',
     value: '52.4% YoY',
-    target: '> 50% YoY',
+    target: 'Target > 50%',
     status: 'On Track',
     change: '+4.8 pts vs Q4',
-    note: 'Didorong ekspansi outlet matang dan efisiensi biaya operasional.',
+    note: 'Outlet maturity and cost discipline remain the main growth levers.',
   },
   {
     label: 'Revenue Growth',
     value: '48.9% YoY',
-    target: '45%–55% YoY',
+    target: 'Range 45%–55%',
     status: 'On Track',
-    change: '+6.1 pts vs last year',
-    note: 'Segmen makanan dan bundling meningkatkan basket size.',
+    change: '+6.1 pts vs LY',
+    note: 'Food bundles continue to lift basket size and repeat transactions.',
   },
   {
     label: 'Net Profit Margin',
     value: '2.2%',
-    target: '2.0%–2.5%',
+    target: 'Range 2.0%–2.5%',
     status: 'Watchlist',
-    change: '-0.2 pts vs target peak',
-    note: 'Masih sehat, tetapi tekanan promosi perlu dipantau.',
+    change: '-0.2 pts vs peak',
+    note: 'Promotional pressure is manageable but still needs tighter control.',
   },
   {
     label: 'Operating Cash Flow',
     value: 'Rp46.5B',
-    target: '> Rp40B / quarter',
+    target: 'Target > Rp40B/qtr',
     status: 'On Track',
-    change: '+Rp5.7B vs quarter plan',
-    note: 'Likuiditas cukup kuat untuk mendukung pembukaan outlet baru.',
+    change: '+Rp5.7B vs plan',
+    note: 'Cash generation remains strong enough to support the next rollout wave.',
   },
 ];
 
@@ -94,25 +94,25 @@ export const drivers: Driver[] = [
     title: 'Food Attachment Rate',
     impact: 'Revenue Growth',
     value: '+18%',
-    insight: 'Bundling minuman dan makanan memperbesar nilai transaksi rata-rata.',
+    insight: 'Bundles lift average ticket and improve mix quality.',
   },
   {
     title: 'Gross Margin Discipline',
     impact: 'Profitability Margin',
     value: '61.8%',
-    insight: 'Kontrol COGS dan mix produk premium menjaga margin tetap kuat.',
+    insight: 'Premium mix and tighter COGS control keep margins resilient.',
   },
   {
     title: 'Store Operating Efficiency',
     impact: 'Net Profit Growth',
     value: '-6.4% OpEx/store',
-    insight: 'Skala ekonomi dari outlet mature menurunkan biaya operasional per outlet.',
+    insight: 'Mature stores are scaling with lower operating cost per outlet.',
   },
   {
     title: 'Cash Conversion',
     impact: 'Cash Flow Health',
     value: '27 days',
-    insight: 'Perputaran kas lebih cepat menjaga pendanaan ekspansi tetap sehat.',
+    insight: 'Faster cash cycles preserve funding capacity for expansion.',
   },
 ];
 
@@ -161,22 +161,22 @@ export const outletPerformance: OutletPerformance[] = [
 
 export const alerts: AlertItem[] = [
   {
-    title: 'Margin promo kuartal ini mulai tertekan',
+    title: 'Promo margin is slightly compressed',
     level: 'High',
-    detail: 'Diskon pada cluster outlet baru menekan margin 0.3 poin di bawah area matang.',
-    action: 'Review promo depth dan perkuat bundling high-margin.',
+    detail: 'New-store discounting is dragging margin 0.3 points below mature clusters.',
+    action: 'Reduce promo depth and push higher-margin bundles.',
   },
   {
-    title: 'Surabaya belum menyamai produktivitas outlet target',
+    title: 'Surabaya is below target productivity',
     level: 'Medium',
-    detail: 'Revenue growth masih di bawah koridor target CPM untuk wilayah ekspansi tier-1.',
-    action: 'Audit jam ramai, mix menu, dan strategi local campaign.',
+    detail: 'Revenue growth is still below the CPM corridor for tier-1 expansion cities.',
+    action: 'Review daypart mix, menu fit, and local campaign design.',
   },
   {
-    title: 'Cash flow tetap aman untuk fase ekspansi berikutnya',
+    title: 'Cash position remains expansion-ready',
     level: 'Low',
-    detail: 'Arus kas operasi masih di atas threshold minimum kuartalan.',
-    action: 'Pertahankan disiplin capex dan pembukaan outlet berbasis prioritas kota.',
+    detail: 'Operating cash flow still sits above the minimum quarterly threshold.',
+    action: 'Keep capex prioritization disciplined for the next opening wave.',
   },
 ];
 

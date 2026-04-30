@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { AlertsPanel } from '@/components/AlertsPanel';
 import { DriversPanel } from '@/components/DriversPanel';
 import { KpiCard } from '@/components/KpiCard';
@@ -9,22 +10,50 @@ import { alerts, drivers, kpis, outletPerformance, scenarios, trends } from '@/d
 export default function Home() {
   return (
     <main className="page-shell">
+      <section className="brand-bar">
+        <div className="brand-lockup">
+          <Image src="/fore-logo.png" alt="Fore Coffee" width={140} height={48} priority className="brand-logo" />
+          <div>
+            <span className="eyebrow">Corporate Performance Management</span>
+            <p className="brand-subtitle">Executive dashboard prototype for strategic KPI control</p>
+          </div>
+        </div>
+        <div className="brand-actions">
+          <span className="locale-pill">ID / EN</span>
+          <button type="button" className="download-chip">2026 Strategy Focus</button>
+        </div>
+      </section>
+
+      <section className="announcement-strip">
+        <p>Growth thesis: profitable expansion, stronger digital mix, and disciplined margin protection.</p>
+        <span>CPM planning baseline</span>
+      </section>
+
       <section className="topbar">
         <div className="topbar-copy">
-          <span className="eyebrow">Fore Coffee · CPM Executive Dashboard</span>
-          <h1>Single-screen performance view for profit-led growth</h1>
+          <span className="eyebrow">Fore Coffee · Net Profit Growth Target</span>
+          <h1>Compact view of the metrics that matter most.</h1>
           <p>
-            Monitor <strong>Net Profit Growth &gt; 50% YoY</strong> with compact visibility into revenue,
-            margin, cash flow, outlet performance, and scenario readiness.
+            Track <strong>Net Profit Growth &gt; 50% YoY</strong> with supporting visibility into revenue,
+            margin, cash flow, outlet contribution, and decision scenarios.
           </p>
         </div>
         <div className="strategy-strip card compact-card">
           <span className="eyebrow">2026 Focus</span>
-          <ul>
-            <li>Scale profitable outlets</li>
-            <li>Protect margin quality</li>
-            <li>Keep expansion cash-positive</li>
-          </ul>
+          <div className="strategy-grid">
+            <div>
+              <strong>217</strong>
+              <span>Existing outlets baseline</span>
+            </div>
+            <div>
+              <strong>140+</strong>
+              <span>Planned new outlets</span>
+            </div>
+            <div>
+              <strong>&gt;50%</strong>
+              <span>Profit growth ambition</span>
+            </div>
+          </div>
         </div>
       </section>
 
