@@ -13,73 +13,105 @@ import {
 
 type Locale = 'id' | 'en';
 
-type Dictionary = {
-  brandEyebrow: string;
-  brandSubtitle: string;
+type Copy = {
+  eyebrow: string;
+  subtitle: string;
   strategyButton: string;
   strategyBanner: string;
   strategyTag: string;
   heroEyebrow: string;
   heroTitle: string;
   heroBody: string;
-  primaryRowTitle: string;
-  supportingRowTitle: string;
-  financialTitle: string;
-  financialNote: string;
-  digitalTitle: string;
-  digitalNote: string;
-  categoryTitle: string;
-  categoryNote: string;
-  alertsTitle: string;
-  alertsNote: string;
-  legendRevenue: string;
-  legendProfit: string;
-  labels: {
-    profit: string;
-    digital: string;
-    category: string;
-    revenue: string;
-    margin: string;
-    cashflow: string;
-  };
-  notes: {
-    profit: string;
-    digital: string;
-    category: string;
-    revenue: string;
-    margin: string;
-    cashflow: string;
-  };
-  financialSummary: Array<{ label: string; value: string }>;
-  digitalSummary: Array<{ label: string; value: string }>;
-  categorySummary: Array<{ label: string; value: string }>;
-  alertText: Record<'promo' | 'surabaya' | 'digital', { title: string; body: string }>;
+  focusTitle: string;
+  focusItems: Array<{ value: string; label: string }>;
+  kpiLabel: string;
+  supportLabel: string;
+  trendEyebrow: string;
+  trendTitle: string;
+  trendNote: string;
+  trendSummaryTitle: string;
+  trendSummaryItems: Array<{ value: string; label: string }>;
+  trendInsightTitle: string;
+  trendInsightBody: string;
+  driverEyebrow: string;
+  driverTitle: string;
+  driverNote: string;
+  outletEyebrow: string;
+  outletTitle: string;
+  outletNote: string;
+  outletInsightTitle: string;
+  outletInsightBody: string;
+  scenarioEyebrow: string;
+  scenarioTitle: string;
+  scenarioNote: string;
+  scenarioItems: Array<{ name: string; result: string; note: string }>;
+  alertEyebrow: string;
+  alertTitle: string;
+  alertNote: string;
+  revenueLegend: string;
+  profitLegend: string;
+  impact: string;
+  action: string;
+  labels: Record<'profit'|'digital'|'category'|'revenue'|'margin'|'cashflow', string>;
+  notes: Record<'profit'|'digital'|'category'|'revenue'|'margin'|'cashflow', string>;
+  digitalItems: Array<{ label: string; share: string }>;
+  categoryItems: Array<{ label: string; share: string }>;
+  alertText: Record<'promo' | 'surabaya' | 'digital', { title: string; action: string }>;
   status: Record<'On Track' | 'Watchlist' | 'Critical' | 'High' | 'Medium' | 'Low', string>;
 };
 
-const dictionary: Record<Locale, Dictionary> = {
+const copy: Record<Locale, Copy> = {
   en: {
-    brandEyebrow: 'Corporate Performance Management',
-    brandSubtitle: 'Executive dashboard prototype for strategic KPI control',
+    eyebrow: 'Corporate Performance Management',
+    subtitle: 'Executive dashboard prototype for strategic KPI control',
     strategyButton: '2026 Strategy Focus',
-    strategyBanner: 'Strategic focus: grow profit, strengthen digital channels, and scale non-coffee categories responsibly.',
-    strategyTag: 'Final KPI-aligned view',
-    heroEyebrow: 'Fore Coffee · Executive Overview',
-    heroTitle: 'Three strategic KPIs, three supporting KPIs, one clear dashboard.',
-    heroBody:
-      'This CPM dashboard focuses on profit growth, digital transaction penetration, and new category contribution, supported by revenue, margin, and cash flow discipline.',
-    primaryRowTitle: 'Primary KPIs',
-    supportingRowTitle: 'Supporting KPIs',
-    financialTitle: 'Financial Performance',
-    financialNote: 'Profit, revenue, margin, and cash flow alignment',
-    digitalTitle: 'Digital Performance',
-    digitalNote: 'Digital transaction penetration and channel mix',
-    categoryTitle: 'Category Expansion',
-    categoryNote: 'Non-coffee contribution and growth diversification',
-    alertsTitle: 'Alerts & Recommendations',
-    alertsNote: 'Most important follow-up actions',
-    legendRevenue: 'Revenue',
-    legendProfit: 'Net Profit',
+    strategyBanner: 'Growth thesis: profit growth, digital channel strength, and non-coffee expansion must move together.',
+    strategyTag: 'One-page executive view',
+    heroEyebrow: 'Fore Coffee · Final KPI Alignment',
+    heroTitle: 'One-page dashboard for the metrics that matter most.',
+    heroBody: 'This view focuses on the final agreed KPI set: profit growth, digital sales penetration, and new category contribution, supported by revenue, margin, and cash flow.',
+    focusTitle: '2026 Focus',
+    focusItems: [
+      { value: '217', label: 'Existing outlets baseline' },
+      { value: '140+', label: 'Planned new outlets' },
+      { value: '30', label: 'Donut outlet expansion plan' },
+    ],
+    kpiLabel: 'Primary KPI',
+    supportLabel: 'Supporting KPI',
+    trendEyebrow: 'Financial Performance',
+    trendTitle: 'Revenue vs Profit Momentum',
+    trendNote: 'Semester 1 trend',
+    trendSummaryTitle: 'Supporting KPI Summary',
+    trendSummaryItems: [
+      { value: '48.9% YoY', label: 'Revenue Growth' },
+      { value: '61.8%', label: 'Gross Margin' },
+      { value: 'Rp46.5B', label: 'Cash Flow' },
+    ],
+    trendInsightTitle: 'Financial takeaway',
+    trendInsightBody: 'The growth profile remains healthy because revenue is rising while margin discipline and operating cash flow are still above the strategic floor.',
+    driverEyebrow: 'Digital Performance',
+    driverTitle: 'Channel Penetration Mix',
+    driverNote: 'Main KPI: digital sales penetration',
+    outletEyebrow: 'Category Expansion',
+    outletTitle: 'New Category Contribution',
+    outletNote: 'Main KPI: non-coffee growth',
+    outletInsightTitle: 'Category takeaway',
+    outletInsightBody: 'Food and donut expansion now acts as a real secondary growth engine, reducing dependence on coffee-only revenue.',
+    scenarioEyebrow: 'Decision Support',
+    scenarioTitle: 'Quick Scenarios',
+    scenarioNote: 'Simple executive view',
+    scenarioItems: [
+      { name: 'Base Case', result: '52%', note: 'Profit growth' },
+      { name: 'Digital Push', result: '64%', note: 'Digital penetration' },
+      { name: 'Category Push', result: '24%', note: 'New category share' },
+    ],
+    alertEyebrow: 'Action Center',
+    alertTitle: 'Key Alerts',
+    alertNote: 'Immediate attention',
+    revenueLegend: 'Revenue',
+    profitLegend: 'Net Profit',
+    impact: 'Impact',
+    action: 'Action',
     labels: {
       profit: 'Net Profit Growth',
       digital: 'Digital Sales Penetration Rate',
@@ -89,41 +121,27 @@ const dictionary: Record<Locale, Dictionary> = {
       cashflow: 'Cash Flow Health',
     },
     notes: {
-      profit: 'Tracks whether expansion and efficiency translate into stronger bottom-line growth.',
-      digital: 'Measures the dominance of app and digital channels in total transactions.',
-      category: 'Measures the success of non-coffee and food diversification as a new growth engine.',
-      revenue: 'Shows whether outlet expansion and category growth still drive top-line performance.',
-      margin: 'Protects the quality of growth so rising sales still create healthy profitability.',
-      cashflow: 'Ensures expansion and diversification remain supported by operating liquidity.',
+      profit: 'Shows whether expansion and efficiency truly translate into bottom-line growth.',
+      digital: 'Measures how dominant app and digital channels are in total transactions.',
+      category: 'Measures whether non-coffee categories become a real new growth engine.',
+      revenue: 'Top-line growth support from outlet expansion and food-led demand.',
+      margin: 'Profit quality guardrail through NPM and gross margin discipline.',
+      cashflow: 'Operating liquidity support for expansion and diversification.',
     },
-    financialSummary: [
-      { label: 'Revenue corridor', value: '45%–55% YoY' },
-      { label: 'Gross margin', value: '61.8%' },
-      { label: 'Quarterly cash flow', value: 'Rp46.5B' },
+    digitalItems: [
+      { label: 'Fore App', share: '38%' },
+      { label: 'Marketplace', share: '24%' },
+      { label: 'Offline POS', share: '38%' },
     ],
-    digitalSummary: [
-      { label: 'Digital transactions', value: '61.7%' },
-      { label: 'Fore App share', value: '38%' },
-      { label: 'Offline dependency', value: '38%' },
-    ],
-    categorySummary: [
-      { label: 'Non-coffee total', value: '22.3%' },
-      { label: 'Food & donut', value: '17.1%' },
-      { label: 'Coffee core', value: '77.7%' },
+    categoryItems: [
+      { label: 'Coffee', share: '77.7%' },
+      { label: 'Food & Donut', share: '17.1%' },
+      { label: 'Other Non-Coffee', share: '5.2%' },
     ],
     alertText: {
-      promo: {
-        title: 'Protect margin during aggressive promo cycles',
-        body: 'Reduce discount depth on new-store clusters and prioritize bundles with stronger unit economics.',
-      },
-      surabaya: {
-        title: 'Raise productivity in Surabaya before next rollout wave',
-        body: 'Tighten local campaign design and improve menu mix before expanding further in similar clusters.',
-      },
-      digital: {
-        title: 'Sustain digital adoption after the 60% threshold',
-        body: 'Maintain app-led incentives so digital penetration stays above target as outlet count increases.',
-      },
+      promo: { title: 'Promo margin needs discipline', action: 'Reduce discount depth and prioritize healthier bundles.' },
+      surabaya: { title: 'Surabaya productivity still trails target', action: 'Improve local menu mix and campaign precision.' },
+      digital: { title: 'Digital penetration must stay above 60%', action: 'Maintain app-led conversion incentives.' },
     },
     status: {
       'On Track': 'On Track',
@@ -135,27 +153,56 @@ const dictionary: Record<Locale, Dictionary> = {
     },
   },
   id: {
-    brandEyebrow: 'Corporate Performance Management',
-    brandSubtitle: 'Prototype dashboard eksekutif untuk kontrol KPI strategis',
+    eyebrow: 'Corporate Performance Management',
+    subtitle: 'Prototype dashboard eksekutif untuk kontrol KPI strategis',
     strategyButton: 'Fokus Strategi 2026',
-    strategyBanner: 'Fokus strategis: menumbuhkan laba, memperkuat kanal digital, dan memperbesar kategori non-kopi secara terukur.',
-    strategyTag: 'Tampilan final sesuai KPI',
-    heroEyebrow: 'Fore Coffee · Executive Overview',
-    heroTitle: 'Tiga KPI utama, tiga KPI pendukung, satu dashboard yang jelas.',
-    heroBody:
-      'Dashboard CPM ini berfokus pada pertumbuhan laba, penetrasi transaksi digital, dan kontribusi kategori baru, yang didukung oleh disiplin revenue, margin, dan cash flow.',
-    primaryRowTitle: 'KPI Utama',
-    supportingRowTitle: 'KPI Pendukung',
-    financialTitle: 'Financial Performance',
-    financialNote: 'Hubungan profit, revenue, margin, dan cash flow',
-    digitalTitle: 'Digital Performance',
-    digitalNote: 'Penetrasi transaksi digital dan komposisi kanal',
-    categoryTitle: 'Category Expansion',
-    categoryNote: 'Kontribusi non-kopi dan diversifikasi pertumbuhan',
-    alertsTitle: 'Alerts & Recommendations',
-    alertsNote: 'Tindak lanjut paling penting',
-    legendRevenue: 'Revenue',
-    legendProfit: 'Net Profit',
+    strategyBanner: 'Tesis pertumbuhan: laba, penguatan kanal digital, dan ekspansi non-kopi harus bergerak bersama.',
+    strategyTag: 'One-page executive view',
+    heroEyebrow: 'Fore Coffee · Final KPI Alignment',
+    heroTitle: 'Dashboard satu halaman untuk metrik yang paling penting.',
+    heroBody: 'Tampilan ini berfokus pada KPI final yang disepakati: pertumbuhan laba, penetrasi penjualan digital, dan kontribusi kategori baru, yang didukung oleh revenue, margin, dan cash flow.',
+    focusTitle: 'Fokus 2026',
+    focusItems: [
+      { value: '217', label: 'Baseline outlet aktif' },
+      { value: '140+', label: 'Rencana outlet baru' },
+      { value: '30', label: 'Rencana outlet donat' },
+    ],
+    kpiLabel: 'KPI Utama',
+    supportLabel: 'KPI Pendukung',
+    trendEyebrow: 'Financial Performance',
+    trendTitle: 'Momentum Revenue vs Profit',
+    trendNote: 'Tren semester 1',
+    trendSummaryTitle: 'Ringkasan KPI Pendukung',
+    trendSummaryItems: [
+      { value: '48.9% YoY', label: 'Revenue Growth' },
+      { value: '61.8%', label: 'Gross Margin' },
+      { value: 'Rp46.5B', label: 'Cash Flow' },
+    ],
+    trendInsightTitle: 'Financial takeaway',
+    trendInsightBody: 'Profil pertumbuhan masih sehat karena revenue naik, sementara disiplin margin dan arus kas operasi tetap berada di atas batas strategis.',
+    driverEyebrow: 'Digital Performance',
+    driverTitle: 'Komposisi Penetrasi Kanal',
+    driverNote: 'KPI utama: penetrasi penjualan digital',
+    outletEyebrow: 'Category Expansion',
+    outletTitle: 'Kontribusi Kategori Baru',
+    outletNote: 'KPI utama: pertumbuhan non-kopi',
+    outletInsightTitle: 'Category takeaway',
+    outletInsightBody: 'Ekspansi makanan dan donat mulai menjadi mesin pertumbuhan kedua yang nyata, sehingga ketergantungan pada kopi saja berkurang.',
+    scenarioEyebrow: 'Decision Support',
+    scenarioTitle: 'Skenario Cepat',
+    scenarioNote: 'Tampilan eksekutif sederhana',
+    scenarioItems: [
+      { name: 'Skenario Dasar', result: '52%', note: 'Pertumbuhan laba' },
+      { name: 'Dorong Digital', result: '64%', note: 'Penetrasi digital' },
+      { name: 'Dorong Kategori', result: '24%', note: 'Porsi kategori baru' },
+    ],
+    alertEyebrow: 'Action Center',
+    alertTitle: 'Key Alerts',
+    alertNote: 'Perlu perhatian segera',
+    revenueLegend: 'Revenue',
+    profitLegend: 'Net Profit',
+    impact: 'Dampak',
+    action: 'Aksi',
     labels: {
       profit: 'Net Profit Growth',
       digital: 'Digital Sales Penetration Rate',
@@ -165,41 +212,27 @@ const dictionary: Record<Locale, Dictionary> = {
       cashflow: 'Cash Flow Health',
     },
     notes: {
-      profit: 'Mengukur apakah ekspansi dan efisiensi benar-benar menghasilkan pertumbuhan laba bersih.',
-      digital: 'Mengukur dominasi aplikasi dan kanal digital dalam total transaksi.',
-      category: 'Mengukur keberhasilan diversifikasi non-kopi dan makanan sebagai mesin pertumbuhan baru.',
-      revenue: 'Menunjukkan apakah ekspansi outlet dan kategori baru tetap mendorong pertumbuhan pendapatan.',
-      margin: 'Menjaga kualitas pertumbuhan agar kenaikan penjualan tetap menghasilkan profitabilitas sehat.',
-      cashflow: 'Memastikan ekspansi dan diversifikasi tetap ditopang oleh likuiditas operasional.',
+      profit: 'Menunjukkan apakah ekspansi dan efisiensi benar-benar menghasilkan pertumbuhan laba bersih.',
+      digital: 'Mengukur seberapa dominan aplikasi dan kanal digital dalam total transaksi.',
+      category: 'Mengukur apakah kategori non-kopi menjadi mesin pertumbuhan baru yang nyata.',
+      revenue: 'Dukungan pertumbuhan top-line dari ekspansi outlet dan permintaan berbasis food.',
+      margin: 'Penjaga kualitas profit melalui disiplin NPM dan gross margin.',
+      cashflow: 'Dukungan likuiditas operasional untuk ekspansi dan diversifikasi.',
     },
-    financialSummary: [
-      { label: 'Koridor revenue', value: '45%–55% YoY' },
-      { label: 'Gross margin', value: '61.8%' },
-      { label: 'Cash flow kuartalan', value: 'Rp46.5B' },
+    digitalItems: [
+      { label: 'Fore App', share: '38%' },
+      { label: 'Marketplace', share: '24%' },
+      { label: 'Offline POS', share: '38%' },
     ],
-    digitalSummary: [
-      { label: 'Transaksi digital', value: '61.7%' },
-      { label: 'Porsi Fore App', value: '38%' },
-      { label: 'Ketergantungan offline', value: '38%' },
-    ],
-    categorySummary: [
-      { label: 'Total non-kopi', value: '22.3%' },
-      { label: 'Food & donut', value: '17.1%' },
-      { label: 'Core coffee', value: '77.7%' },
+    categoryItems: [
+      { label: 'Coffee', share: '77.7%' },
+      { label: 'Food & Donut', share: '17.1%' },
+      { label: 'Other Non-Coffee', share: '5.2%' },
     ],
     alertText: {
-      promo: {
-        title: 'Jaga margin saat siklus promo agresif',
-        body: 'Kurangi kedalaman diskon pada cluster outlet baru dan prioritaskan bundling dengan unit economics yang lebih kuat.',
-      },
-      surabaya: {
-        title: 'Naikkan produktivitas Surabaya sebelum gelombang ekspansi berikutnya',
-        body: 'Perbaiki desain campaign lokal dan komposisi menu sebelum memperbesar ekspansi di cluster serupa.',
-      },
-      digital: {
-        title: 'Jaga adopsi digital setelah melewati ambang 60%',
-        body: 'Pertahankan insentif berbasis aplikasi agar penetrasi digital tetap di atas target saat jumlah outlet bertambah.',
-      },
+      promo: { title: 'Margin promo perlu dijaga', action: 'Kurangi kedalaman diskon dan prioritaskan bundling yang lebih sehat.' },
+      surabaya: { title: 'Produktivitas Surabaya masih di bawah target', action: 'Perbaiki menu mix lokal dan presisi campaign.' },
+      digital: { title: 'Penetrasi digital harus tetap di atas 60%', action: 'Pertahankan insentif konversi berbasis aplikasi.' },
     },
     status: {
       'On Track': 'On Track',
@@ -218,28 +251,24 @@ function StatusPill({ label, tone }: { label: string; tone: string }) {
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>('id');
-  const t = dictionary[locale];
+  const t = copy[locale];
   const maxRevenue = useMemo(() => Math.max(...financialTrend.map((point) => point.revenue)), []);
   const maxProfit = useMemo(() => Math.max(...financialTrend.map((point) => point.profit)), []);
 
   return (
-    <main className="page-shell executive-shell">
+    <main className="page-shell">
       <section className="brand-bar">
         <div className="brand-lockup">
           <Image src="/fore-logo.png" alt="Fore Coffee" width={140} height={48} priority className="brand-logo" />
           <div>
-            <span className="eyebrow">{t.brandEyebrow}</span>
-            <p className="brand-subtitle">{t.brandSubtitle}</p>
+            <span className="eyebrow">{t.eyebrow}</span>
+            <p className="brand-subtitle">{t.subtitle}</p>
           </div>
         </div>
         <div className="brand-actions">
           <div className="locale-toggle" role="tablist" aria-label="Language switcher">
-            <button type="button" className={locale === 'id' ? 'locale-option active' : 'locale-option'} onClick={() => setLocale('id')}>
-              ID
-            </button>
-            <button type="button" className={locale === 'en' ? 'locale-option active' : 'locale-option'} onClick={() => setLocale('en')}>
-              EN
-            </button>
+            <button type="button" className={locale === 'id' ? 'locale-option active' : 'locale-option'} onClick={() => setLocale('id')}>ID</button>
+            <button type="button" className={locale === 'en' ? 'locale-option active' : 'locale-option'} onClick={() => setLocale('en')}>EN</button>
           </div>
           <span className="download-chip">{t.strategyButton}</span>
         </div>
@@ -250,163 +279,178 @@ export default function Home() {
         <span>{t.strategyTag}</span>
       </section>
 
-      <section className="hero-strip card clean-hero">
+      <section className="hero-strip card">
         <div className="hero-strip-copy">
           <span className="eyebrow">{t.heroEyebrow}</span>
           <h1>{t.heroTitle}</h1>
           <p>{t.heroBody}</p>
         </div>
-      </section>
-
-      <section className="metric-section">
-        <div className="row-head">
-          <span className="eyebrow">{t.primaryRowTitle}</span>
-        </div>
-        <div className="primary-kpi-grid">
-          {primaryKpis.map((item) => (
-            <article key={item.id} className="card feature-kpi-card">
-              <div className="card-topline">
-                <h3>{t.labels[item.id]}</h3>
-                <StatusPill label={t.status[item.status]} tone={item.status.toLowerCase().replace(' ', '')} />
+        <div className="hero-focus-inline">
+          <span className="eyebrow">{t.focusTitle}</span>
+          <div className="hero-focus-stats">
+            {t.focusItems.map((item) => (
+              <div key={item.label} className="focus-stat">
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
               </div>
-              <p className="feature-value">{item.value}</p>
-              <div className="kpi-meta-row">
-                <p className="kpi-target">{item.target}</p>
-                <p className="kpi-change">{item.change}</p>
-              </div>
-              <p className="kpi-note">{t.notes[item.id]}</p>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="metric-section supporting-section">
-        <div className="row-head">
-          <span className="eyebrow">{t.supportingRowTitle}</span>
-        </div>
-        <div className="supporting-kpi-grid">
-          {supportingKpis.map((item) => (
-            <article key={item.id} className="card support-kpi-card">
-              <div className="card-topline">
-                <h3>{t.labels[item.id]}</h3>
-                <StatusPill label={t.status[item.status]} tone={item.status.toLowerCase().replace(' ', '')} />
-              </div>
-              <p className="support-value">{item.value}</p>
-              <div className="kpi-meta-row">
-                <p className="kpi-target">{item.target}</p>
-                <p className="kpi-change">{item.change}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+      <section className="dense-kpi-grid primary-three-grid">
+        {primaryKpis.map((item) => (
+          <article key={item.id} className="card kpi-card primary-card">
+            <div className="card-topline">
+              <span className="eyebrow">{t.kpiLabel}</span>
+              <StatusPill label={t.status[item.status]} tone={item.status.toLowerCase().replace(' ', '')} />
+            </div>
+            <h3>{t.labels[item.id]}</h3>
+            <p className="kpi-value">{item.value}</p>
+            <div className="kpi-meta-row">
+              <p className="kpi-target">{item.target}</p>
+              <p className="kpi-change">{item.change}</p>
+            </div>
+            <p className="kpi-note">{t.notes[item.id]}</p>
+          </article>
+        ))}
       </section>
 
-      <section className="executive-grid">
-        <article className="card executive-panel financial-panel">
+      <section className="viewport-grid refined-grid">
+        <section className="card panel trend-panel">
           <div className="section-head compact-head">
             <div>
-              <span className="eyebrow">{t.financialTitle}</span>
-              <h2>{t.financialNote}</h2>
+              <span className="eyebrow">{t.trendEyebrow}</span>
+              <h2>{t.trendTitle}</h2>
             </div>
+            <p>{t.trendNote}</p>
           </div>
-          <div className="financial-chart">
+          <div className="mini-chart-grid">
             {financialTrend.map((point) => (
-              <div key={point.month} className="financial-column">
-                <div className="financial-bars">
-                  <div className="mini-bar revenue" style={{ height: `${(point.revenue / maxRevenue) * 92}px` }} />
-                  <div className="mini-bar profit" style={{ height: `${(point.profit / maxProfit) * 50}px` }} />
+              <div key={point.month} className="mini-bar-col">
+                <div className="mini-bar-stack">
+                  <div className="mini-bar revenue" style={{ height: `${(point.revenue / maxRevenue) * 76}px` }} />
+                  <div className="mini-bar profit" style={{ height: `${(point.profit / maxProfit) * 76}px` }} />
                 </div>
                 <strong>{point.month}</strong>
               </div>
             ))}
           </div>
           <div className="mini-legend">
-            <span><i className="legend revenue" /> {t.legendRevenue}</span>
-            <span><i className="legend profit" /> {t.legendProfit}</span>
+            <span><i className="legend revenue" /> {t.revenueLegend}</span>
+            <span><i className="legend profit" /> {t.profitLegend}</span>
           </div>
-          <div className="summary-strip">
-            {t.financialSummary.map((item) => (
-              <div key={item.label} className="summary-item">
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
+          <div className="trend-bottom-grid compact-trend-bottom">
+            <section className="trend-summary-card">
+              <span className="eyebrow">{t.trendSummaryTitle}</span>
+              <div className="trend-summary-stats">
+                {t.trendSummaryItems.map((item) => (
+                  <div key={item.label} className="trend-summary-item">
+                    <strong>{item.value}</strong>
+                    <span>{item.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
+            <section className="trend-insight-card">
+              <span className="eyebrow">{t.trendInsightTitle}</span>
+              <p>{t.trendInsightBody}</p>
+            </section>
           </div>
-        </article>
+        </section>
 
-        <article className="card executive-panel digital-panel">
+        <section className="card panel drivers-panel">
           <div className="section-head compact-head">
             <div>
-              <span className="eyebrow">{t.digitalTitle}</span>
-              <h2>{t.digitalNote}</h2>
+              <span className="eyebrow">{t.driverEyebrow}</span>
+              <h2>{t.driverTitle}</h2>
             </div>
+            <p>{t.driverNote}</p>
           </div>
-          <div className="stack-list">
+          <div className="mini-list compact-list">
             {digitalMix.map((item) => (
-              <div key={item.channel} className="clean-list-item">
-                <div>
+              <article key={item.channel} className="mini-item">
+                <div className="mini-item-top">
                   <strong>{item.channel}</strong>
+                  <span>{item.share}</span>
                 </div>
-                <span>{item.share}</span>
-              </div>
+              </article>
             ))}
           </div>
-          <div className="summary-strip vertical-summary">
-            {t.digitalSummary.map((item) => (
-              <div key={item.label} className="summary-item">
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </article>
-
-        <article className="card executive-panel category-panel">
-          <div className="section-head compact-head">
-            <div>
-              <span className="eyebrow">{t.categoryTitle}</span>
-              <h2>{t.categoryNote}</h2>
+          <div className="mini-support-row">
+            <div className="mini-support-chip">
+              <strong>{supportingKpis[1].value}</strong>
+              <span>{t.labels.margin}</span>
+            </div>
+            <div className="mini-support-chip">
+              <strong>{supportingKpis[2].value}</strong>
+              <span>{t.labels.cashflow}</span>
             </div>
           </div>
-          <div className="stack-list">
+        </section>
+
+        <section className="card panel outlet-panel">
+          <div className="section-head compact-head">
+            <div>
+              <span className="eyebrow">{t.outletEyebrow}</span>
+              <h2>{t.outletTitle}</h2>
+            </div>
+            <p>{t.outletNote}</p>
+          </div>
+          <div className="mini-list compact-list">
             {categoryMix.map((item) => (
-              <div key={item.segment} className="clean-list-item">
-                <div>
+              <article key={item.segment} className="mini-item">
+                <div className="mini-item-top">
                   <strong>{item.segment}</strong>
+                  <span>{item.contribution}</span>
                 </div>
-                <span>{item.contribution}</span>
-              </div>
+              </article>
             ))}
           </div>
-          <div className="summary-strip vertical-summary">
-            {t.categorySummary.map((item) => (
-              <div key={item.label} className="summary-item">
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </div>
-            ))}
+          <div className="footer-copy-card single-copy">
+            <p>{t.outletInsightBody}</p>
           </div>
-        </article>
+        </section>
 
-        <article className="card executive-panel alerts-panel-clean">
+        <section className="card panel alerts-panel">
           <div className="section-head compact-head">
             <div>
-              <span className="eyebrow">{t.alertsTitle}</span>
-              <h2>{t.alertsNote}</h2>
+              <span className="eyebrow">{t.alertEyebrow}</span>
+              <h2>{t.alertTitle}</h2>
             </div>
+            <p>{t.alertNote}</p>
           </div>
-          <div className="alert-stack-clean">
+          <div className="mini-list compact-list">
             {alerts.map((alert) => (
-              <div key={alert.id} className="alert-clean-item">
-                <div className="alert-clean-head">
+              <article key={alert.id} className="mini-item alert-mini-item">
+                <div className="mini-item-top">
                   <strong>{t.alertText[alert.id].title}</strong>
-                  <StatusPill label={t.status[alert.level]} tone={alert.level.toLowerCase()} />
+                  <span className={`pill ${alert.level.toLowerCase()}`}>{t.status[alert.level]}</span>
                 </div>
-                <p>{t.alertText[alert.id].body}</p>
-              </div>
+                <p>{t.action}: {t.alertText[alert.id].action}</p>
+              </article>
             ))}
           </div>
-        </article>
+        </section>
+
+        <section className="card panel scenario-panel">
+          <div className="section-head compact-head">
+            <div>
+              <span className="eyebrow">{t.scenarioEyebrow}</span>
+              <h2>{t.scenarioTitle}</h2>
+            </div>
+            <p>{t.scenarioNote}</p>
+          </div>
+          <div className="scenario-mini-grid compact-scenario-grid">
+            {t.scenarioItems.map((item) => (
+              <article key={item.name} className="scenario-chip">
+                <strong>{item.name}</strong>
+                <span>{item.result}</span>
+                <small>{item.note}</small>
+              </article>
+            ))}
+          </div>
+        </section>
       </section>
     </main>
   );
