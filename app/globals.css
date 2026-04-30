@@ -478,3 +478,21 @@ small { font: inherit; }
     grid-template-columns: 1fr;
   }
 }
+
+
+.outlet-panel .compact-head p {
+  max-width: 11ch;
+}
+
+.outlet-panel .mini-item {
+  padding: 7px 9px;
+}
+
+.outlet-panel .footer-copy-card.single-copy {
+  padding: 7px 9px;
+}
+
+.outlet-panel .footer-copy-card p {
+  font-size: 0.72rem;
+  line-height: 1.32;
+}
