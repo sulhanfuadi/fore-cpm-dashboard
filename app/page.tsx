@@ -6,7 +6,55 @@ import { alerts, drivers, kpis, outletPerformance, scenarios, trends } from '@/d
 
 type Locale = 'id' | 'en';
 
-const copy = {
+type Copy = {
+  eyebrow: string;
+  subtitle: string;
+  strategyButton: string;
+  strategyBanner: string;
+  strategyTag: string;
+  heroEyebrow: string;
+  heroTitle: string;
+  heroBody: string;
+  focusTitle: string;
+  focusItems: Array<{ value: string; label: string }>;
+  kpiLabel: string;
+  trendEyebrow: string;
+  trendTitle: string;
+  trendNote: string;
+  driverEyebrow: string;
+  driverTitle: string;
+  driverNote: string;
+  outletEyebrow: string;
+  outletTitle: string;
+  outletNote: string;
+  scenarioEyebrow: string;
+  scenarioTitle: string;
+  scenarioNote: string;
+  alertEyebrow: string;
+  alertTitle: string;
+  alertNote: string;
+  revenueLegend: string;
+  profitLegend: string;
+  impact: string;
+  action: string;
+  scenarioResult: string;
+  outletHeaders: [string, string, string, string];
+  months: string[];
+  kpis: Array<{ label: string; target: string; change: string }>;
+  drivers: Array<{ title: string; impact: string }>;
+  alerts: Array<{ title: string; action: string }>;
+  scenarios: Array<{ name: string; resultLabel: string }>;
+  status: {
+    onTrack: string;
+    watchlist: string;
+    critical: string;
+    strong: string;
+    monitor: string;
+    improve: string;
+  };
+};
+
+const copy: Record<Locale, Copy> = {
   en: {
     eyebrow: 'Corporate Performance Management',
     subtitle: 'Executive dashboard prototype for strategic KPI control',
@@ -14,9 +62,9 @@ const copy = {
     strategyBanner: 'Growth thesis: profitable expansion, stronger digital mix, and disciplined margin protection.',
     strategyTag: 'CPM planning baseline',
     heroEyebrow: 'Fore Coffee · Net Profit Growth Target',
-    heroTitle: 'Metrics-first dashboard built to fit one executive screen.',
+    heroTitle: 'One-screen dashboard for the metrics that matter most.',
     heroBody:
-      'Track Net Profit Growth > 50% YoY with supporting visibility into revenue, margin, cash flow, outlet contribution, and decision scenarios.',
+      'Monitor profit growth, revenue, margin, cash flow, outlet contribution, and decision scenarios in one compact executive view.',
     focusTitle: '2026 Focus',
     focusItems: [
       { value: '217', label: 'Existing outlets baseline' },
@@ -43,7 +91,29 @@ const copy = {
     profitLegend: 'Net Profit',
     impact: 'Impact',
     action: 'Action',
+    scenarioResult: 'Projected profit growth',
     outletHeaders: ['City', 'Growth', 'Contribution', 'Status'],
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    kpis: [
+      { label: 'Net Profit Growth', target: 'Target > 50%', change: '+4.8 pts vs Q4' },
+      { label: 'Revenue Growth', target: 'Range 45%–55%', change: '+6.1 pts vs LY' },
+      { label: 'Net Profit Margin', target: 'Range 2.0%–2.5%', change: '-0.2 pts vs peak' },
+      { label: 'Operating Cash Flow', target: 'Target > Rp40B/qtr', change: '+Rp5.7B vs plan' },
+    ],
+    drivers: [
+      { title: 'Food Attachment Rate', impact: 'Revenue Growth' },
+      { title: 'Gross Margin Discipline', impact: 'Profitability Margin' },
+      { title: 'Store Operating Efficiency', impact: 'Net Profit Growth' },
+    ],
+    alerts: [
+      { title: 'Promo margin is slightly compressed', action: 'Reduce promo depth and push higher-margin bundles.' },
+      { title: 'Surabaya is below target productivity', action: 'Review daypart mix, menu fit, and local campaign design.' },
+    ],
+    scenarios: [
+      { name: 'Base Case', resultLabel: 'Projected profit growth' },
+      { name: 'Aggressive Expansion', resultLabel: 'Projected profit growth' },
+      { name: 'Margin Optimization', resultLabel: 'Projected profit growth' },
+    ],
     status: {
       onTrack: 'On Track',
       watchlist: 'Watchlist',
@@ -60,9 +130,9 @@ const copy = {
     strategyBanner: 'Tesis pertumbuhan: ekspansi yang profitable, bauran digital yang lebih kuat, dan perlindungan margin yang disiplin.',
     strategyTag: 'Baseline perencanaan CPM',
     heroEyebrow: 'Fore Coffee · Target Net Profit Growth',
-    heroTitle: 'Dashboard ringkas yang dirancang muat dalam satu layar eksekutif.',
+    heroTitle: 'Dashboard satu layar untuk metrik yang paling penting.',
     heroBody:
-      'Pantau Net Profit Growth > 50% YoY dengan visibilitas ringkas atas revenue, margin, cash flow, kontribusi outlet, dan skenario keputusan.',
+      'Pantau pertumbuhan laba, revenue, margin, cash flow, kontribusi outlet, dan skenario keputusan dalam satu tampilan eksekutif yang ringkas.',
     focusTitle: 'Fokus 2026',
     focusItems: [
       { value: '217', label: 'Baseline outlet aktif' },
@@ -81,7 +151,7 @@ const copy = {
     outletNote: 'Kontribusi tertinggi',
     scenarioEyebrow: 'Dukungan Keputusan',
     scenarioTitle: 'Skenario Cepat',
-    scenarioNote: 'Opsional siap planning',
+    scenarioNote: 'Opsi siap planning',
     alertEyebrow: 'Pusat Aksi',
     alertTitle: 'Alert Kunci',
     alertNote: 'Perlu perhatian segera',
@@ -89,7 +159,29 @@ const copy = {
     profitLegend: 'Net Profit',
     impact: 'Dampak',
     action: 'Aksi',
+    scenarioResult: 'Proyeksi pertumbuhan laba',
     outletHeaders: ['Kota', 'Growth', 'Kontribusi', 'Status'],
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+    kpis: [
+      { label: 'Pertumbuhan Laba Bersih', target: 'Target > 50%', change: '+4,8 poin vs Q4' },
+      { label: 'Pertumbuhan Pendapatan', target: 'Rentang 45%–55%', change: '+6,1 poin vs LY' },
+      { label: 'Margin Laba Bersih', target: 'Rentang 2,0%–2,5%', change: '-0,2 poin vs puncak' },
+      { label: 'Arus Kas Operasi', target: 'Target > Rp40M/qtr', change: '+Rp5,7M vs rencana' },
+    ],
+    drivers: [
+      { title: 'Attachment Rate Makanan', impact: 'Pertumbuhan Pendapatan' },
+      { title: 'Disiplin Gross Margin', impact: 'Margin Laba' },
+      { title: 'Efisiensi Operasional Toko', impact: 'Pertumbuhan Laba Bersih' },
+    ],
+    alerts: [
+      { title: 'Margin promo sedikit tertekan', action: 'Kurangi kedalaman promo dan dorong bundling bermargin tinggi.' },
+      { title: 'Surabaya masih di bawah produktivitas target', action: 'Review daypart mix, kecocokan menu, dan desain campaign lokal.' },
+    ],
+    scenarios: [
+      { name: 'Skenario Dasar', resultLabel: 'Proyeksi pertumbuhan laba' },
+      { name: 'Ekspansi Agresif', resultLabel: 'Proyeksi pertumbuhan laba' },
+      { name: 'Optimasi Margin', resultLabel: 'Proyeksi pertumbuhan laba' },
+    ],
     status: {
       onTrack: 'On Track',
       watchlist: 'Watchlist',
@@ -99,7 +191,7 @@ const copy = {
       improve: 'Improve',
     },
   },
-} as const;
+};
 
 const statusMap = {
   'On Track': 'onTrack',
@@ -143,21 +235,17 @@ export default function Home() {
         <span>{t.strategyTag}</span>
       </section>
 
-      <section className="hero-grid">
-        <div className="hero-copy">
+      <section className="hero-strip card">
+        <div className="hero-strip-copy">
           <span className="eyebrow">{t.heroEyebrow}</span>
           <h1>{t.heroTitle}</h1>
           <p>{t.heroBody}</p>
         </div>
-        <div className="focus-card card">
-          <div className="section-head compact-head">
-            <div>
-              <span className="eyebrow">{t.focusTitle}</span>
-            </div>
-          </div>
-          <div className="strategy-grid compact-focus-grid">
+        <div className="hero-focus-inline">
+          <span className="eyebrow">{t.focusTitle}</span>
+          <div className="hero-focus-stats">
             {t.focusItems.map((item) => (
-              <div key={item.label}>
+              <div key={item.label} className="focus-stat">
                 <strong>{item.value}</strong>
                 <span>{item.label}</span>
               </div>
@@ -167,17 +255,17 @@ export default function Home() {
       </section>
 
       <section className="kpi-grid dense-kpi-grid">
-        {kpis.map((item) => (
+        {kpis.map((item, index) => (
           <article key={item.label} className="card kpi-card">
             <div className="card-topline">
               <span className="eyebrow">{t.kpiLabel}</span>
               <span className={`status ${statusMap[item.status].toLowerCase()}`}>{t.status[statusMap[item.status]]}</span>
             </div>
-            <h3>{item.label}</h3>
+            <h3>{t.kpis[index].label}</h3>
             <p className="kpi-value">{item.value}</p>
             <div className="kpi-meta-row">
-              <p className="kpi-target">{item.target}</p>
-              <p className="kpi-change">{item.change}</p>
+              <p className="kpi-target">{t.kpis[index].target}</p>
+              <p className="kpi-change">{t.kpis[index].change}</p>
             </div>
           </article>
         ))}
@@ -193,13 +281,13 @@ export default function Home() {
             <p>{t.trendNote}</p>
           </div>
           <div className="mini-chart-grid">
-            {trends.map((point) => (
+            {trends.map((point, index) => (
               <div key={point.month} className="mini-bar-col">
                 <div className="mini-bar-stack">
-                  <div className="mini-bar revenue" style={{ height: `${(point.revenue / maxRevenue) * 82}px` }} />
-                  <div className="mini-bar profit" style={{ height: `${(point.netProfit / maxRevenue) * 82}px` }} />
+                  <div className="mini-bar revenue" style={{ height: `${(point.revenue / maxRevenue) * 76}px` }} />
+                  <div className="mini-bar profit" style={{ height: `${(point.netProfit / maxRevenue) * 76}px` }} />
                 </div>
-                <strong>{point.month}</strong>
+                <strong>{t.months[index]}</strong>
                 <span>GM {point.margin}%</span>
               </div>
             ))}
@@ -219,13 +307,13 @@ export default function Home() {
             <p>{t.driverNote}</p>
           </div>
           <div className="mini-list">
-            {drivers.slice(0, 3).map((driver) => (
+            {drivers.slice(0, 3).map((driver, index) => (
               <article key={driver.title} className="mini-item">
                 <div className="mini-item-top">
-                  <strong>{driver.title}</strong>
+                  <strong>{t.drivers[index].title}</strong>
                   <span>{driver.value}</span>
                 </div>
-                <p>{t.impact}: {driver.impact}</p>
+                <p>{t.impact}: {t.drivers[index].impact}</p>
               </article>
             ))}
           </div>
@@ -265,10 +353,11 @@ export default function Home() {
             <p>{t.scenarioNote}</p>
           </div>
           <div className="scenario-mini-grid">
-            {scenarios.map((scenario) => (
+            {scenarios.map((scenario, index) => (
               <article key={scenario.name} className="scenario-chip">
-                <strong>{scenario.name}</strong>
+                <strong>{t.scenarios[index].name}</strong>
                 <span>{scenario.projectedProfitGrowth}</span>
+                <small>{t.scenarios[index].resultLabel}</small>
               </article>
             ))}
           </div>
@@ -283,13 +372,13 @@ export default function Home() {
             <p>{t.alertNote}</p>
           </div>
           <div className="mini-list">
-            {alerts.slice(0, 2).map((alert) => (
+            {alerts.slice(0, 2).map((alert, index) => (
               <article key={alert.title} className="mini-item alert-mini-item">
                 <div className="mini-item-top">
-                  <strong>{alert.title}</strong>
+                  <strong>{t.alerts[index].title}</strong>
                   <span className={`pill ${alert.level.toLowerCase()}`}>{alert.level}</span>
                 </div>
-                <p>{t.action}: {alert.action}</p>
+                <p>{t.action}: {t.alerts[index].action}</p>
               </article>
             ))}
           </div>
