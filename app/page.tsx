@@ -25,18 +25,28 @@ type Copy = {
   trendSummaryItems: Array<{ value: string; label: string }>;
   trendInsightTitle: string;
   trendInsightBody: string;
+  trendDriversTitle: string;
+  trendDrivers: string[];
   driverEyebrow: string;
   driverTitle: string;
   driverNote: string;
+  driverBottomTitle: string;
+  driverBottomItems: Array<{ title: string; value: string }>;
   outletEyebrow: string;
   outletTitle: string;
   outletNote: string;
+  outletInsightTitle: string;
+  outletInsightBody: string;
   scenarioEyebrow: string;
   scenarioTitle: string;
   scenarioNote: string;
+  scenarioAssumptionTitle: string;
+  scenarioAssumptions: string[];
   alertEyebrow: string;
   alertTitle: string;
   alertNote: string;
+  alertBottomTitle: string;
+  alertBottomItems: string[];
   revenueLegend: string;
   profitLegend: string;
   impact: string;
@@ -85,20 +95,34 @@ const copy: Record<Locale, Copy> = {
       { value: '+6 pts', label: 'Gross margin uplift' },
       { value: '+54%', label: 'Profit index expansion' },
     ],
-    trendInsightTitle: 'Momentum insight',
+    trendInsightTitle: 'Momentum Insight',
     trendInsightBody: 'Revenue and net profit continue to rise together, indicating the current expansion phase is still accretive and operational leverage is improving.',
+    trendDriversTitle: 'What drives the trend',
+    trendDrivers: ['Maturing outlets scale better', 'Food bundles support ticket size', 'Margin holds above the strategic floor'],
     driverEyebrow: 'Profit Bridge',
     driverTitle: 'Top Value Drivers',
     driverNote: 'Core CPM levers',
+    driverBottomTitle: 'Driver watchpoints',
+    driverBottomItems: [
+      { title: 'Promo Depth', value: 'Needs tighter control' },
+      { title: 'Food Mix', value: 'Positive upside' },
+      { title: 'Store Efficiency', value: 'Best expansion lever' },
+    ],
     outletEyebrow: 'Expansion View',
     outletTitle: 'Top Cities',
     outletNote: 'Highest contribution',
+    outletInsightTitle: 'Cluster takeaway',
+    outletInsightBody: 'Jakarta and Bandung remain the strongest contribution clusters, while Surabaya needs productivity acceleration before the next outlet wave.',
     scenarioEyebrow: 'Decision Support',
     scenarioTitle: 'Quick Scenarios',
     scenarioNote: 'Planning-ready options',
+    scenarioAssumptionTitle: 'Shared assumptions',
+    scenarioAssumptions: ['Same-store demand remains resilient', 'No major commodity cost shock', 'New outlet ramp stays within plan'],
     alertEyebrow: 'Action Center',
     alertTitle: 'Key Alerts',
     alertNote: 'Immediate attention',
+    alertBottomTitle: 'Suggested next moves',
+    alertBottomItems: ['Review promo depth by cluster', 'Prioritize Surabaya productivity fixes', 'Keep capex sequencing disciplined'],
     revenueLegend: 'Revenue',
     profitLegend: 'Net Profit',
     impact: 'Impact',
@@ -161,20 +185,34 @@ const copy: Record<Locale, Copy> = {
       { value: '+6 poin', label: 'Peningkatan gross margin' },
       { value: '+54%', label: 'Ekspansi indeks profit' },
     ],
-    trendInsightTitle: 'Insight momentum',
+    trendInsightTitle: 'Insight Momentum',
     trendInsightBody: 'Revenue dan net profit terus naik bersama, menunjukkan fase ekspansi saat ini masih accretive dan operational leverage terus membaik.',
+    trendDriversTitle: 'Pendorong tren',
+    trendDrivers: ['Outlet matang semakin efisien', 'Bundling makanan mengangkat ticket size', 'Margin tetap di atas lantai strategis'],
     driverEyebrow: 'Profit Bridge',
     driverTitle: 'Driver Nilai Utama',
     driverNote: 'Levers CPM inti',
+    driverBottomTitle: 'Watchpoints driver',
+    driverBottomItems: [
+      { title: 'Kedalaman Promo', value: 'Perlu kontrol lebih ketat' },
+      { title: 'Food Mix', value: 'Masih ada upside positif' },
+      { title: 'Efisiensi Toko', value: 'Leverage ekspansi terbaik' },
+    ],
     outletEyebrow: 'Pandangan Ekspansi',
     outletTitle: 'Kota Teratas',
     outletNote: 'Kontribusi tertinggi',
+    outletInsightTitle: 'Insight cluster',
+    outletInsightBody: 'Jakarta dan Bandung tetap menjadi cluster kontribusi terkuat, sementara Surabaya perlu akselerasi produktivitas sebelum gelombang outlet berikutnya.',
     scenarioEyebrow: 'Dukungan Keputusan',
     scenarioTitle: 'Skenario Cepat',
     scenarioNote: 'Opsi siap planning',
+    scenarioAssumptionTitle: 'Asumsi bersama',
+    scenarioAssumptions: ['Permintaan same-store tetap resilien', 'Tidak ada shock besar biaya komoditas', 'Ramp outlet baru tetap sesuai rencana'],
     alertEyebrow: 'Pusat Aksi',
     alertTitle: 'Alert Kunci',
     alertNote: 'Perlu perhatian segera',
+    alertBottomTitle: 'Langkah berikutnya',
+    alertBottomItems: ['Review kedalaman promo per cluster', 'Prioritaskan perbaikan produktivitas Surabaya', 'Jaga sequencing capex tetap disiplin'],
     revenueLegend: 'Revenue',
     profitLegend: 'Net Profit',
     impact: 'Dampak',
@@ -333,6 +371,14 @@ export default function Home() {
               <p>{t.trendInsightBody}</p>
             </section>
           </div>
+          <section className="trend-driver-strip">
+            <span className="eyebrow">{t.trendDriversTitle}</span>
+            <div className="trend-driver-list">
+              {t.trendDrivers.map((item) => (
+                <div key={item} className="trend-driver-chip">{item}</div>
+              ))}
+            </div>
+          </section>
         </section>
 
         <section className="card panel drivers-panel">
@@ -354,6 +400,17 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <section className="panel-footer-block">
+            <span className="eyebrow">{t.driverBottomTitle}</span>
+            <div className="footer-mini-grid footer-mini-grid-three">
+              {t.driverBottomItems.map((item) => (
+                <article key={item.title} className="footer-mini-card">
+                  <strong>{item.title}</strong>
+                  <span>{item.value}</span>
+                </article>
+              ))}
+            </div>
+          </section>
         </section>
 
         <section className="card panel outlet-panel">
@@ -379,6 +436,12 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <section className="panel-footer-block">
+            <span className="eyebrow">{t.outletInsightTitle}</span>
+            <div className="footer-copy-card">
+              <p>{t.outletInsightBody}</p>
+            </div>
+          </section>
         </section>
 
         <section className="card panel scenario-panel">
@@ -398,6 +461,14 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <section className="panel-footer-block">
+            <span className="eyebrow">{t.scenarioAssumptionTitle}</span>
+            <div className="assumption-list">
+              {t.scenarioAssumptions.map((item) => (
+                <div key={item} className="assumption-item">{item}</div>
+              ))}
+            </div>
+          </section>
         </section>
 
         <section className="card panel alerts-panel">
@@ -419,6 +490,14 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <section className="panel-footer-block">
+            <span className="eyebrow">{t.alertBottomTitle}</span>
+            <div className="assumption-list">
+              {t.alertBottomItems.map((item) => (
+                <div key={item} className="assumption-item">{item}</div>
+              ))}
+            </div>
+          </section>
         </section>
       </section>
     </main>
