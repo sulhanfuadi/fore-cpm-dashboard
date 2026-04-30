@@ -1,27 +1,50 @@
 # Fore CPM Dashboard
 
-Prototype frontend-only dashboard `Next.js` untuk tugas BI Fore Coffee berbasis `Corporate Performance Management (CPM)`.
+This `Next.js` frontend prototype was created to fulfill an **Business Intelligence** course project, with a focus on designing a **BI Tool** for the **Fore Coffee** business case.
 
-## Fitur
+The BI tool selected for this project is **Corporate Performance Management (CPM)**, with the main purpose of helping visualize and monitor strategic KPIs such as **Net Profit Growth**, **Revenue Growth**, **Profitability Margin**, and **Cash Flow Health**.
+
+This project is currently still in the **initial design and planning stage**, so the current scope is focused on a **frontend/dashboard prototype** using dummy data. Even though it is still a conceptual prototype, the dashboard has been designed carefully and with reference to common patterns, structures, and practices found in high-end BI tools.
+
+## Project Goals
+
+- fulfill the requirements of a Business Intelligence course project,
+- design a BI tool concept that is relevant to the selected business KPIs,
+- visualize the relationship between strategic KPIs and management decision-making,
+- provide a dashboard prototype that can be used for presentation and future development.
+
+## Prototype Features
 
 - Executive KPI overview
 - Target vs actual monitoring
 - Profit driver analysis
 - Outlet & city performance
 - Alert & recommendation panel
-- Scenario simulation sederhana
+- Simple scenario simulation
 
-## Menjalankan project
+## Tech Stack
+
+- `Next.js`
+- `React`
+- `TypeScript`
+- Custom CSS styling
+
+## Run the Project
 
 ```bash
 npm install
 npm run dev
 ```
 
-Lalu buka `http://localhost:3000`.
+Then open `http://localhost:3000`.
 
-## Catatan
+## Current Scope Limitations
 
-- Semua data masih dummy/static.
-- Tidak ada backend, database, atau integrasi API.
-- Project ini disiapkan agar mudah di-`git init`, commit, dan push saat diperlukan.
+- This is still a frontend-only prototype.
+- All data is currently dummy/static.
+- There is no backend, database, or external API integration yet.
+- It does not yet include authentication, data ingestion, or real-time analytics features.
+
+## Development Notes
+
+This project is structured so it can be extended easily in the next phase, whether for academic presentation purposes or further technical development. The repository structure is also prepared to support clean versioning, commits, and future remote publishing.
