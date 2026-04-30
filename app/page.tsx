@@ -35,6 +35,8 @@ type Copy = {
   trendInsightBody: string;
   trendExtraTitle: string;
   trendExtraItems: Array<{ label: string; value: string }>;
+  trendFooterTitle: string;
+  trendFooterBody: string;
   driverEyebrow: string;
   driverTitle: string;
   driverNote: string;
@@ -99,6 +101,8 @@ const copy: Record<Locale, Copy> = {
       { label: 'Most stable signal', value: 'Cash Flow' },
       { label: 'Main growth base', value: 'Revenue' },
     ],
+    trendFooterTitle: 'Executive note',
+    trendFooterBody: 'Financially, Fore still shows a balanced growth profile: revenue grows, margins stay healthy, and cash generation remains supportive of expansion.',
     driverEyebrow: 'Digital Performance',
     driverTitle: 'Channel Penetration Mix',
     driverNote: 'Main KPI: digital sales penetration',
@@ -198,6 +202,8 @@ const copy: Record<Locale, Copy> = {
       { label: 'Sinyal paling stabil', value: 'Cash Flow' },
       { label: 'Basis pertumbuhan utama', value: 'Revenue' },
     ],
+    trendFooterTitle: 'Catatan eksekutif',
+    trendFooterBody: 'Secara finansial, Fore masih menunjukkan profil pertumbuhan yang seimbang: revenue naik, margin tetap sehat, dan arus kas masih mendukung ekspansi.',
     driverEyebrow: 'Digital Performance',
     driverTitle: 'Komposisi Penetrasi Kanal',
     driverNote: 'KPI utama: penetrasi penjualan digital',
@@ -387,6 +393,10 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </section>
+          <section className="trend-footer-note">
+            <span className="eyebrow">{t.trendFooterTitle}</span>
+            <p>{t.trendFooterBody}</p>
           </section>
         </section>
 
